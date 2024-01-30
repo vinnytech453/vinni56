@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinnie Website</title>
+    <style>
+        /* Add your styling here */
+        button {
+            margin: 10px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Welcome Screen -->
+<button onclick="goToHomePage()">Welcome to Vinnie website...</button>
+
+<!-- Homepage -->
+<div id="homepage" style="display: none;">
+    <button onclick="showPaymentPopup(5, 50)">5GB @50</button>
+    <button onclick="showPaymentPopup(10, 150)">10GB @150</button>
+    <button onclick="showPaymentPopup(20, 300)">20GB @300</button>
+    <button onclick="showPaymentPopup(30, 500)">30GB @500</button>
+    <button onclick="showPaymentPopup(90, 750)">90GB @750</button>
+</div>
+
+<!-- Payment Message -->
+<div id="paymentMessage" style="display: none;">
+    <p id="paymentText"></p>
+    <p>Clicking the button confirms your payment via M-Pesa.</p>
+    <p>Popup for payment will be displayed soon. Dial *140*100*0768666068# to complete the payment.</p>
+</div>
+
+<script>
+    // JavaScript functions
+    function goToHomePage() {
+        document.getElementById('homepage').style.display = 'block';
+    }
+
+    function showPaymentPopup(dataAmount, cost) {
+        const phoneNumber = "0768666068";
+        const mpesaCode = `*140*100*${phoneNumber}#`;
+
+        const message = `By clicking this button, you confirm to pay ${cost} for ${dataAmount}GB via your M-Pesa. A popup to pay will be displayed soon. Dial ${mpesaCode} to complete the payment.`;
+
+        document.getElementById('paymentText').innerText = message;
+        document.getElementById('paymentMessage').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
